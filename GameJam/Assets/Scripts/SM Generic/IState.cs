@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 public interface ITest<T>
 {
 	T CurrentState { get; set; }
