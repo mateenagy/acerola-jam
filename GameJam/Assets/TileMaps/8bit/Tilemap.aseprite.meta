@@ -984,7 +984,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tilemap_42
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1004,7 +1004,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tilemap_43
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1024,7 +1024,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tilemap_44
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1034,6 +1034,26 @@ ScriptedImporter:
       width: 8
       height: 8
     spriteID: 5ec4ecc79dd954f1ca786d32f3677f96
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Tilemap_45
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 4
+      width: 8
+      height: 8
+    spriteID: 8539d5b5ad50e4d9499d6ad7a3ef1c6b
     spriteBone: []
     spriteOutline: []
     vertices: []

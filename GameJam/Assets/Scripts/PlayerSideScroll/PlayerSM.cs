@@ -8,9 +8,11 @@ public class PlayerSM : MonoBehaviour
 	PlayerState currentState;
 	PlayerFactory factory;
 	Rigidbody2D rb;
+	Animator animator;
 
 	[Header("Essentials")]
 	[SerializeField] float groundCheckRadius = 1f;
+	[SerializeField] Transform groundCheckTransform;
 	[SerializeField] Vector3 groundCheckOffset;
 	[SerializeField] LayerMask groundLayer;
 	[SerializeField] LayerMask instantDeathLayer;
@@ -40,6 +42,7 @@ public class PlayerSM : MonoBehaviour
 	public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
 	public bool IsJumping { get => isJumping; set => isJumping = value; }
 	public bool IsFall { get => isFall; set => isFall = value; }
+	public Animator Animator { get => animator; set => animator = value; }
 	#endregion
 
 	void Awake()
@@ -47,6 +50,7 @@ public class PlayerSM : MonoBehaviour
 		factory = new PlayerFactory(this);
 		currentState = factory.States[PlayerStates.Ground];
 		rb = GetComponent<Rigidbody2D>();
+		animator = GetComponent<Animator>();
 	}
 
 	void Start()
@@ -60,10 +64,10 @@ public class PlayerSM : MonoBehaviour
 		IsMoving = InputX > 0 || InputX < 0;
 		IsGrounded = CheckGround();
 		IsFall = !IsGrounded && Rb.velocity.y < 0;
-
+		Flip();
 		if (Input.GetKeyDown(KeyCode.X))
 		{
-			Instantiate(clonePrefab, transform.position, transform.rotation);
+			Instantiate(clonePrefab, new(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation);
 		}
 
 		if (Input.GetKeyDown(KeyCode.Space))
@@ -81,7 +85,19 @@ public class PlayerSM : MonoBehaviour
 
 	bool CheckGround()
 	{
-		return Physics2D.OverlapCircle(transform.position + groundCheckOffset, groundCheckRadius, groundLayer);
+		return Physics2D.OverlapCircle(groundCheckTransform.position, groundCheckRadius, groundLayer);
+	}
+
+	void Flip()
+	{
+		if (InputX > 0)
+		{
+			transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+		}
+		if (InputX < 0)
+		{
+			transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+		}
 	}
 
 	bool IsInstaDeath()
@@ -97,6 +113,6 @@ public class PlayerSM : MonoBehaviour
 	void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere(transform.position + groundCheckOffset, groundCheckRadius);
+		Gizmos.DrawWireSphere(groundCheckTransform.position, groundCheckRadius);
 	}
 }

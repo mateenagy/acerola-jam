@@ -9,6 +9,7 @@ public class Idle : PlayerState
 	public override void Enter()
 	{
 		base.Enter();
+		Ctx.Animator.SetBool("IsMoving", false);
 		Debug.Log("Idle");
 	}
 	public override void Update()

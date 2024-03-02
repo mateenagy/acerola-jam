@@ -8,12 +8,18 @@ public class Move : PlayerState
 	{
 		base.Enter();
 		Debug.Log("Move");
+		Ctx.Animator.SetBool("IsMoving", true);
 	}
 	public override void Update()
 	{
 		base.Update();
 		Ctx.Rb.velocity = new(Ctx.InputX * Ctx.Speed, Ctx.Rb.velocity.y);
 		CheckSwitchState();
+	}
+
+	public override void Exit()
+	{
+		base.Exit();
 	}
 	public override void CheckSwitchState()
 	{
