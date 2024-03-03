@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
 	public int cloneUsage = 0;
 	public int currentLevel = 0;
 	public bool isStarted = false;
+	public bool isDialog = true;
 	void Awake()
 	{
 		if (Instance == null)
@@ -36,6 +37,10 @@ public class LevelManager : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.R))
 		{
 			LoadScene(SceneManager.GetActiveScene().name, "Fade");
+		}
+		if (Input.GetKeyDown(KeyCode.L))
+		{
+			isDialog = !isDialog;
 		}
 	}
 
