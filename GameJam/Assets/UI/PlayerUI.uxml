@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/PlayerUI.uss?fileID=7433441132597879392&amp;guid=ce772b90022f041779cb13e0b6eceef1&amp;type=3#PlayerUI" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; flex-direction: column; align-self: auto; justify-content: flex-end; max-width: none; align-items: flex-start;">
+        <ui:VisualElement name="TopPart" class="player-ui" style="flex-grow: 0; height: 64px; background-color: rgba(0, 0, 0, 0); flex-direction: row; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; max-width: 100%; width: 50%; min-width: 50%; border-bottom-color: rgba(255, 255, 255, 0); border-bottom-width: 2px; border-left-width: 2px; border-right-width: 2px; border-right-color: rgba(255, 255, 255, 0); border-left-color: rgba(255, 255, 255, 0); max-height: 189px; min-height: 30px; border-top-color: rgba(255, 255, 255, 0);">
+            <ui:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Sprites/Decorations/UI/PlayerIcon.aseprite?fileID=-8328923581568760697&amp;guid=9cb86dfbe83ed401586508dff3f54d9b&amp;type=3#PlayerIcon&quot;); height: 65px; width: 80px; -unity-background-scale-mode: scale-and-crop; margin-right: -29px;" />
+            <ui:Label tabindex="-1" text="x3" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Counter" style="color: rgb(255, 255, 255); -unity-font: initial;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

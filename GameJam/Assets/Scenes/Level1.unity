@@ -13726,6 +13726,10 @@ PrefabInstance:
       propertyPath: restartPoint
       value: 
       objectReference: {fileID: 1610191848}
+    - target: {fileID: 6561250317356219773, guid: c020cd86114724ec5bc71233a560721d, type: 3}
+      propertyPath: availableClone
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -13,7 +13,10 @@ public class PlayerTDSM : MonoBehaviour
 	float inputX;
 	float inputY;
 	bool isGripped;
+	bool canControl = true;
 	Transform glitchPos;
+	public TrailRenderer trail1;
+	public TrailRenderer trail2;
 	[SerializeField] UnityEvent _events;
 
 	[Header("Movement")]
@@ -40,11 +43,27 @@ public class PlayerTDSM : MonoBehaviour
 		Factory = new PlayerTDFactory(this);
 		CurrentState = Factory.States[PlayerTDStates.Move];
 		Rb = GetComponent<Rigidbody2D>();
+		trail1.enabled = false;
+		trail2.enabled = false;
 	}
 
 	void Start()
 	{
 		CurrentState.EnterStates();
+		for (int i = 0; i < glitches.Count; i++)
+		{
+			if (i != LevelManager.Instance.currentLevel)
+			{
+				glitches[i].gameObject.SetActive(false);
+			}
+		}
+
+		if (LevelManager.Instance.currentLevel != 0)
+		{
+			transform.position = glitches[LevelManager.Instance.currentLevel - 1].position;
+		}
+		trail1.enabled = true;
+		trail2.enabled = true;
 	}
 
 	public void Gripped(Glitch glitch)
@@ -60,33 +79,52 @@ public class PlayerTDSM : MonoBehaviour
 
 	void IndicatorRotation()
 	{
-		Vector2 dir = glitches[GameManager.currentGlitch].position - indicatorTransform.position;
+		Vector2 dir = glitches[LevelManager.Instance.currentLevel].position - indicatorTransform.position;
 		Quaternion rotation = Quaternion.LookRotation(Vector3.forward, dir);
 		indicatorTransform.rotation = rotation;
 	}
 
-	// void NextGlitch()
-	// {
-	// 	manager.currentGlitch = (manager.currentGlitch + 1) % glitches.Count;
-	// 	// currentGlitch = manager.currentGlitch + 1;
-	// }
-
 	void Update()
 	{
-		InputX = Input.GetAxisRaw("Horizontal");
-		InputY = Input.GetAxisRaw("Vertical");
+		if (!LevelManager.Instance.isStarted)
+		{
+			return;
+		}
+		if (transform.position.x < -130)
+		{
+			canControl = false;
+			rb.velocity = Vector2.zero;
+			transform.DORotate(new(0, 0, -88), 0.5f);
+		}
+		if (canControl)
+		{
+			InputX = Input.GetAxisRaw("Horizontal");
+			InputY = Input.GetAxisRaw("Vertical");
+		}
+		else
+		{
+			InputX = 0;
+			InputY = 0;
+		}
 		IndicatorRotation();
-
-		// if (Input.GetKeyDown(KeyCode.K))
-		// {
-		// 	NextGlitch();
-		// }
 
 		CurrentState.UpdateStates();
 	}
 
+	IEnumerator TakeBack()
+	{
+		yield return rb.DOMoveX(-120, 1f);
+		canControl = true;
+
+	}
+
 	void FixedUpdate()
 	{
+		if (transform.position.x < -130)
+		{
+			rb.velocity = Vector2.zero;
+			StartCoroutine(TakeBack());
+		}
 		CurrentState.FixedUpdateStates();
 	}
 }

@@ -18,8 +18,7 @@ public class PortalToSpace : MonoBehaviour
 	{
 		if (col.CompareTag("Player"))
 		{
-			GameManager.currentGlitch += 1;
-			// SceneManager.LoadScene("SpaceLevel");
+			LevelManager.Instance.currentLevel += 1;
 			LevelManager.Instance.LoadScene("SpaceLevel", "Fade");
 		}
 	}

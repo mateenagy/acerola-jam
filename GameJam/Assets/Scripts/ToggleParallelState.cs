@@ -39,6 +39,7 @@ public class ToggleParallelState : MonoBehaviour
 			tilemapPresent.color = colorPresent;
 			tilemapColliderPast.enabled = false;
 			tilemapColliderPresent.enabled = true;
+			Debug.Log(tilemapColliderPast.enabled);
 		}
 
 		if (state == ParallelState.Past)

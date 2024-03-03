@@ -12,7 +12,6 @@ public class PlayerTDMove : PlayerTDState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("MOVE");
     }
 
     public override void Update()

@@ -1,0 +1,3 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="PlayerIcon" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 30px; height: 30px; background-image: url(&quot;project://database/Assets/Sprites/Decorations/UI/PlayerIcon.aseprite?fileID=-8328923581568760697&amp;guid=9cb86dfbe83ed401586508dff3f54d9b&amp;type=3#PlayerIcon&quot;); margin-top: 0;" />
+</ui:UXML>

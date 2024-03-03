@@ -10,6 +10,9 @@ public class LevelManager : MonoBehaviour
 	public static LevelManager Instance;
 	public GameObject transitionContainer;
 	[SerializeField] SceneTransition[] transitions;
+	public int cloneUsage = 0;
+	public int currentLevel = 0;
+	public bool isStarted = false;
 	void Awake()
 	{
 		if (Instance == null)
@@ -30,7 +33,10 @@ public class LevelManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			LoadScene(SceneManager.GetActiveScene().name, "Fade");
+		}
 	}
 
 	public void LoadScene(string sceneName, string transitionName)

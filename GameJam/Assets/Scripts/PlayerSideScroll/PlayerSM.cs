@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerSM : MonoBehaviour
@@ -11,6 +12,7 @@ public class PlayerSM : MonoBehaviour
 	Animator animator;
 
 	[Header("Essentials")]
+	[SerializeField] int availableClone = 3;
 	[SerializeField] float groundCheckRadius = 1f;
 	[SerializeField] Transform groundCheckTransform;
 	[SerializeField] Vector3 groundCheckOffset;
@@ -31,6 +33,7 @@ public class PlayerSM : MonoBehaviour
 	bool isFall = false;
 	[Header("Clone")]
 	[SerializeField] GameObject clonePrefab;
+	public UnityEvent _event;
 
 	#region GETTERS/SETTERS
 	public PlayerState CurrentState { get => currentState; set => currentState = value; }
@@ -47,6 +50,7 @@ public class PlayerSM : MonoBehaviour
 
 	void Awake()
 	{
+		LevelManager.Instance.cloneUsage = availableClone;
 		factory = new PlayerFactory(this);
 		currentState = factory.States[PlayerStates.Ground];
 		rb = GetComponent<Rigidbody2D>();
@@ -65,9 +69,11 @@ public class PlayerSM : MonoBehaviour
 		IsGrounded = CheckGround();
 		IsFall = !IsGrounded && Rb.velocity.y < 0;
 		Flip();
-		if (Input.GetKeyDown(KeyCode.X))
+		if (Input.GetKeyDown(KeyCode.X) && LevelManager.Instance.cloneUsage > 0)
 		{
+			LevelManager.Instance.cloneUsage -= 1;
 			Instantiate(clonePrefab, new(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation);
+			_event.Invoke();
 		}
 
 		if (Input.GetKeyDown(KeyCode.Space))
