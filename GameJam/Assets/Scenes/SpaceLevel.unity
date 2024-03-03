@@ -1133,7 +1133,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  speed: 0.01
+  speed: 0.3
   rotationSpeed: 100
   indicatorTransform: {fileID: 1443085854}
   glitches:
