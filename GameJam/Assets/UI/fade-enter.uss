@@ -1,0 +1,16 @@
+.fade {
+    flex-grow: 1;
+    transition-duration: 0s;
+}
+
+.fade--enter {
+    flex-grow: 1;
+    background-color: rgb(255, 255, 255);
+    transition-duration: 1s;
+}
+
+.fade--leave {
+    background-color: rgb(255, 255, 255);
+    opacity: 0;
+    transition-duration: 1s;
+}

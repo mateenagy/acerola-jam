@@ -7,8 +7,11 @@ using UnityEngine.SceneManagement;
 public class Glitch : MonoBehaviour
 {
 	[SerializeField] float radius;
-	[SerializeField] string levelName;
+	[Header("Scene loader")]
+	[SerializeField] string sceneName;
+	[SerializeField] string transition;
 	[SerializeField] UnityEvent events;
+	bool isTransition = false;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -20,8 +23,9 @@ public class Glitch : MonoBehaviour
 	{
 		RaycastHit2D hit = Physics2D.CircleCast(transform.position, radius, Vector2.zero);
 
-		if (hit.collider )
+		if (hit.collider && !isTransition)
 		{
+			isTransition = true;
 			events.Invoke();
 			StartCoroutine(ChangeScene());
 		}
@@ -29,7 +33,7 @@ public class Glitch : MonoBehaviour
 
 	IEnumerator ChangeScene() {
 		yield return new WaitForSeconds(1f);
-		SceneManager.LoadScene(levelName);
+		LevelManager.Instance.LoadScene(sceneName, transition);
 	}
 
 	void OnDrawGizmosSelected()
