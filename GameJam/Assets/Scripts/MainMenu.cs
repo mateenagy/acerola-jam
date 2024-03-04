@@ -26,8 +26,8 @@ public class MainMenu : MonoBehaviour
 
 	void StartGame(ClickEvent click)
 	{
-		Debug.Log("Play");
 		LevelManager.Instance.isStarted = true;
+		LevelManager.Instance.isDialog = true;
 		Destroy(gameObject);
 	}
 

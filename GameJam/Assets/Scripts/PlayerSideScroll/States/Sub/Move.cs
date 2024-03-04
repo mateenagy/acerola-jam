@@ -7,7 +7,6 @@ public class Move : PlayerState
 	public override void Enter()
 	{
 		base.Enter();
-		Debug.Log("Move");
 		Ctx.Animator.SetBool("IsMoving", true);
 	}
 	public override void Update()

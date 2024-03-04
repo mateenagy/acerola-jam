@@ -14,9 +14,6 @@ public class PlayerTDGripped : PlayerTDState
 	public override void Enter()
 	{
 		base.Enter();
-		Debug.Log("GRIPPED TO GLITCH");
-
-		// Ctx.Rb.velocity = Vector2.zero;
 	}
 
 	public override void Update()

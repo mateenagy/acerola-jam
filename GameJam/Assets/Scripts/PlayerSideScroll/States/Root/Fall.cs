@@ -12,7 +12,6 @@ public class Fall : PlayerState
 	public override void Enter()
 	{
 		base.Enter();
-		Debug.Log("Fall");
 		InitialSubState();
 	}
 

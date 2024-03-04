@@ -12,6 +12,7 @@ public class Jump : PlayerState
 	public override void Enter()
 	{
 		base.Enter();
+		Ctx.JumpSound.Play();
 		Ctx.Rb.velocity = new(Ctx.Rb.velocity.x, Ctx.JumpHeight);
 		InitialSubState();
 	}

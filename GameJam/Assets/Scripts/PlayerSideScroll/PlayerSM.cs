@@ -35,6 +35,10 @@ public class PlayerSM : MonoBehaviour
 	[SerializeField] GameObject clonePrefab;
 	public UnityEvent _event;
 
+	[Header("Audio")]
+	public AudioSource JumpSound;
+	public AudioSource CloneSound;
+
 	#region GETTERS/SETTERS
 	public PlayerState CurrentState { get => currentState; set => currentState = value; }
 	public Rigidbody2D Rb { get => rb; set => rb = value; }
@@ -46,11 +50,15 @@ public class PlayerSM : MonoBehaviour
 	public bool IsJumping { get => isJumping; set => isJumping = value; }
 	public bool IsFall { get => isFall; set => isFall = value; }
 	public Animator Animator { get => animator; set => animator = value; }
+
 	#endregion
 
 	void Awake()
 	{
-		LevelManager.Instance.cloneUsage = availableClone;
+		if (LevelManager.Instance)
+		{
+			LevelManager.Instance.cloneUsage = availableClone;
+		}
 		factory = new PlayerFactory(this);
 		currentState = factory.States[PlayerStates.Ground];
 		rb = GetComponent<Rigidbody2D>();
@@ -69,10 +77,12 @@ public class PlayerSM : MonoBehaviour
 		IsGrounded = CheckGround();
 		IsFall = !IsGrounded && Rb.velocity.y < 0;
 		Flip();
+		//&& LevelManager.Instance.cloneUsage > 0
 		if (Input.GetKeyDown(KeyCode.X) && LevelManager.Instance.cloneUsage > 0)
 		{
 			LevelManager.Instance.cloneUsage -= 1;
 			Instantiate(clonePrefab, new(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation);
+			CloneSound.Play();
 			_event.Invoke();
 		}
 

@@ -24,6 +24,8 @@ public class PlayerTDSM : MonoBehaviour
 	[SerializeField] float rotationSpeed = 2f;
 	[SerializeField] Transform indicatorTransform;
 	[SerializeField] List<Transform> glitches;
+	[Header("Sounds")]
+	public AudioSource ship;
 
 	#region GETTERS / SETTERS        
 	public PlayerTDState CurrentState { get => currentState; set => currentState = value; }
@@ -86,10 +88,12 @@ public class PlayerTDSM : MonoBehaviour
 
 	void Update()
 	{
-		if (!LevelManager.Instance.isStarted)
+		if (!LevelManager.Instance.isStarted || LevelManager.Instance.isDialog)
 		{
+			indicatorTransform.gameObject.SetActive(false);
 			return;
 		}
+		indicatorTransform.gameObject.SetActive(true);
 		if (transform.position.x < -130)
 		{
 			canControl = false;

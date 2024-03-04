@@ -12,7 +12,6 @@ public class Ground : PlayerState
 	public override void Enter()
 	{
 		base.Enter();
-		Debug.Log("Enter");
 		Ctx.IsJumping = false;
 		InitialSubState();
 	}
