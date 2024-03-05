@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour
 	public int currentLevel = 0;
 	public bool isStarted = false;
 	public bool isDialog = true;
+	bool isTransitionRun = false;
 	void Awake()
 	{
 		if (Instance == null)
@@ -34,7 +35,7 @@ public class LevelManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.R))
+		if (Input.GetKeyDown(KeyCode.R) && !isTransitionRun && SceneManager.GetActiveScene().name != "SpaceLevel")
 		{
 			LoadScene(SceneManager.GetActiveScene().name, "Fade");
 		}
@@ -46,6 +47,7 @@ public class LevelManager : MonoBehaviour
 
 	public void LoadScene(string sceneName, string transitionName)
 	{
+		isTransitionRun = true;
 		StartCoroutine(LoadSceneAsync(sceneName, transitionName));
 	}
 
@@ -63,5 +65,6 @@ public class LevelManager : MonoBehaviour
 		scene.allowSceneActivation = true;
 
 		yield return transition.TransitionLeave();
+		isTransitionRun = false;
 	}
 }
