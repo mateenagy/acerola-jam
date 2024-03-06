@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour
 	public int currentLevel = 0;
 	public bool isStarted = false;
 	public bool isDialog = true;
+	public bool insideWall = false;
 	bool isTransitionRun = false;
 	void Awake()
 	{

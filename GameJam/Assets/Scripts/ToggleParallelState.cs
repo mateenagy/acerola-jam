@@ -14,22 +14,29 @@ public enum ParallelState
 public class ToggleParallelState : MonoBehaviour
 {
 	public Tilemap tilemapPast;
-	public TilemapCollider2D tilemapColliderPast;
+	public CompositeCollider2D compositeCollider2DPast;
 	public Tilemap tilemapPresent;
-	public TilemapCollider2D tilemapColliderPresent;
+	public CompositeCollider2D compositeCollider2DPresent;
 	public ParallelState state = ParallelState.Present;
 	public CinemachineVirtualCamera virtualCamera;
 	public Volume volume;
+	readonly float changeTime = 0.7f;
+	float changeTimeCounter;
 
 	Color colorPast = Color.white;
 	Color colorPresent = Color.white;
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.C))
+		if (Input.GetKeyDown(KeyCode.C) && !LevelManager.Instance.insideWall && changeTimeCounter <= 0f)
 		{
+			changeTimeCounter = changeTime;
 			state = state == ParallelState.Present ? ParallelState.Past : ParallelState.Present;
 			StartCoroutine(ShakeCamera());
+		}
+		if (changeTimeCounter >= 0f)
+		{
+			changeTimeCounter -= Time.deltaTime;
 		}
 		if (state == ParallelState.Present)
 		{
@@ -37,8 +44,8 @@ public class ToggleParallelState : MonoBehaviour
 			colorPresent.a = 1f;
 			tilemapPast.color = colorPast;
 			tilemapPresent.color = colorPresent;
-			tilemapColliderPast.enabled = false;
-			tilemapColliderPresent.enabled = true;
+			compositeCollider2DPast.isTrigger = true;
+			compositeCollider2DPresent.isTrigger = false;
 		}
 
 		if (state == ParallelState.Past)
@@ -47,8 +54,8 @@ public class ToggleParallelState : MonoBehaviour
 			colorPresent.a = 0.3f;
 			tilemapPast.color = colorPast;
 			tilemapPresent.color = colorPresent;
-			tilemapColliderPast.enabled = true;
-			tilemapColliderPresent.enabled = false;
+			compositeCollider2DPast.isTrigger = false;
+			compositeCollider2DPresent.isTrigger = true;
 		}
 	}
 

@@ -16,6 +16,11 @@ public class MovingPlatform : MonoBehaviour
 	public bool isTriggered = false;
 	bool isPlaying = false;
 
+	void Start()
+	{
+		transform.position = start.position;
+	}
+
 	void Update()
 	{
 		if (startOnTrigger)
@@ -41,10 +46,10 @@ public class MovingPlatform : MonoBehaviour
 	IEnumerator MovePlatform()
 	{
 		isPlaying = true;
-		yield return transform.DOMove(end.position, speed).WaitForCompletion();
+		yield return transform.DOMove(end.position, speed).SetEase(Ease.Linear).WaitForCompletion();
 		if (loop)
 		{
-			yield return transform.DOMove(start.position, speed).WaitForCompletion();
+			yield return transform.DOMove(start.position, speed).SetEase(Ease.Linear).WaitForCompletion();
 			isPlaying = false;
 		}
 	}
@@ -62,6 +67,7 @@ public class MovingPlatform : MonoBehaviour
 		if (start != null && end != null)
 		{
 			Gizmos.DrawLine(start.position, end.position);
+			transform.position = start.position;
 		}
 	}
 
