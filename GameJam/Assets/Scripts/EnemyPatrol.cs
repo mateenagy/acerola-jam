@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
@@ -17,9 +18,9 @@ public class EnemyPatrol : MonoBehaviour
 	void Update()
 	{
 		if (!isPlaying)
-			{
-				StartCoroutine(MovePlatform());
-			}
+		{
+			StartCoroutine(MovePlatform());
+		}
 	}
 
 	IEnumerator MovePlatform()
@@ -30,12 +31,20 @@ public class EnemyPatrol : MonoBehaviour
 		isPlaying = false;
 	}
 
+
+	void OnDrawGizmosSelected()
+	{
+		if (start != null)
+		{
+			transform.position = start.position;
+		}
+	}
 	void OnDrawGizmos()
 	{
 		if (start != null && end != null)
 		{
 			Gizmos.DrawLine(start.position, end.position);
-			transform.position = start.position;
+			// transform.position = start.position;
 		}
 	}
 }

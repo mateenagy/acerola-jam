@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
 	UIDocument ui;
     // Start is called before the first frame update
+	public DialogSystem dialog;
 
 	void Awake()
 	{
@@ -27,7 +28,7 @@ public class MainMenu : MonoBehaviour
 	void StartGame(ClickEvent click)
 	{
 		LevelManager.Instance.isStarted = true;
-		LevelManager.Instance.isDialog = true;
+		dialog.ShowDialog();
 		Destroy(gameObject);
 	}
 

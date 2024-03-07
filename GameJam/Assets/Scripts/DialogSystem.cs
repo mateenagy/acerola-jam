@@ -14,25 +14,27 @@ public class DialogSystem : MonoBehaviour
 	public AudioSource stepSound;
 	Label label;
 	// Start is called before the first frame update
-	void Start()
-	{
-		label = ui.rootVisualElement.Q("DialogContainer").Q<Label>("Dialog");
-		label.text = lines[index];
 
-		if (showOnStart)
+	void Awake()
+	{
+		if (!showOnStart)
 		{
-			LevelManager.Instance.isDialog = true;
+			dialog.SetActive(false);
 		}
 	}
-
-	void OnEnable()
+	void Start()
 	{
+		if (showOnStart)
+		{
+			label = ui.rootVisualElement.Q("DialogContainer").Q<Label>("Dialog");
+			label.text = lines[index];
+			LevelManager.Instance.isDialog = true;
+		}
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		dialog.SetActive(LevelManager.Instance.isDialog);
 		if (!LevelManager.Instance.isDialog)
 		{
 			Time.timeScale = 1;
@@ -40,31 +42,36 @@ public class DialogSystem : MonoBehaviour
 		}
 
 		Time.timeScale = 0;
-
-		label = ui.rootVisualElement.Q("DialogContainer").Q<Label>("Dialog");
-
-		if (Input.GetKeyDown(KeyCode.Return))
+		if (ui.rootVisualElement != null)
 		{
-			index += 1;
-			stepSound.Play();
+			label = ui.rootVisualElement.Q("DialogContainer").Q<Label>("Dialog");
+
+			if (Input.GetKeyDown(KeyCode.Return))
+			{
+				index += 1;
+				stepSound.Play();
+			}
+
+			if (index <= lines.Length - 1)
+			{
+				label.text = lines[index];
+			}
+			else
+			{
+				stepSound.Play();
+				index = 0;
+				dialog.SetActive(false);
+				LevelManager.Instance.isDialog = false;
+				Time.timeScale = 1;
+				return;
+			}
 		}
 
-		if (index <= lines.Length - 1)
-		{
-			label.text = lines[index];
-		}
-		else
-		{
-			stepSound.Play();
-			index = 0;
-			LevelManager.Instance.isDialog = false;
-			Time.timeScale = 1;
-			return;
-		}
 	}
 
 	public void ShowDialog()
 	{
+		dialog.SetActive(true);
 		LevelManager.Instance.isDialog = true;
 	}
 }

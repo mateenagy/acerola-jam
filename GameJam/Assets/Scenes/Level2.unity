@@ -14738,7 +14738,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8843341946729859786, guid: fda6569f92a3e470386f002ec708cddf, type: 3}
       propertyPath: lines.Array.data[0]
-      value: Friendly reminder! \nDeath maybe not the end...
+      value: Friendly reminder! \nDeath may not be the end...
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14960,11 +14960,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1002893179084173132, guid: c020cd86114724ec5bc71233a560721d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3813739
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1002893179084173132, guid: c020cd86114724ec5bc71233a560721d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0021800008
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2183008635222376214, guid: c020cd86114724ec5bc71233a560721d, type: 3}
       propertyPath: m_LocalPosition.x

@@ -20,11 +20,13 @@ public class ParallelWall : MonoBehaviour
 	{
 		Debug.Log("Enter");
 		LevelManager.Instance.insideWall = true;
+		gameObject.layer = 0;
 	}
 
 	void OnTriggerExit2D(Collider2D collider)
 	{
 		Debug.Log("Exit");
 		LevelManager.Instance.insideWall = false;
+		gameObject.layer = 7;
 	}
 }

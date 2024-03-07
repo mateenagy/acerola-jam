@@ -19,6 +19,7 @@ public class ToggleParallelState : MonoBehaviour
 	public CompositeCollider2D compositeCollider2DPresent;
 	public ParallelState state = ParallelState.Present;
 	public CinemachineVirtualCamera virtualCamera;
+	public AudioSource timeSound;
 	public Volume volume;
 	readonly float changeTime = 0.7f;
 	float changeTimeCounter;
@@ -31,6 +32,7 @@ public class ToggleParallelState : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.C) && !LevelManager.Instance.insideWall && changeTimeCounter <= 0f)
 		{
 			changeTimeCounter = changeTime;
+			timeSound.Play();
 			state = state == ParallelState.Present ? ParallelState.Past : ParallelState.Present;
 			StartCoroutine(ShakeCamera());
 		}
@@ -46,6 +48,8 @@ public class ToggleParallelState : MonoBehaviour
 			tilemapPresent.color = colorPresent;
 			compositeCollider2DPast.isTrigger = true;
 			compositeCollider2DPresent.isTrigger = false;
+			tilemapPast.gameObject.layer = 0;
+			tilemapPresent.gameObject.layer = 7;
 		}
 
 		if (state == ParallelState.Past)
@@ -56,6 +60,8 @@ public class ToggleParallelState : MonoBehaviour
 			tilemapPresent.color = colorPresent;
 			compositeCollider2DPast.isTrigger = false;
 			compositeCollider2DPresent.isTrigger = true;
+			tilemapPast.gameObject.layer = 7;
+			tilemapPresent.gameObject.layer = 0;
 		}
 	}
 

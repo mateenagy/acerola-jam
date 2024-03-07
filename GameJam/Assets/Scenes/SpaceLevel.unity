@@ -846,6 +846,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: a97a3e0b61ab54b59abe0abcaa02fa84, type: 3}
   m_PrefabInstance: {fileID: 623706556}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &738730817 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8843341946729859786, guid: fda6569f92a3e470386f002ec708cddf, type: 3}
+  m_PrefabInstance: {fileID: 6688924910057822342}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff283798d732446fa652289bd0e23cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &837387907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,6 +1817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb74026b98bc48ff86a1484d1af8763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialog: {fileID: 738730817}
 --- !u!1001 &1254772861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2210,7 +2222,7 @@ MonoBehaviour:
   - {fileID: 1050810626}
   - {fileID: 6761047}
   - {fileID: 1109585662}
-  ship: {fileID: 0}
+  ship: {fileID: 1328271425}
 --- !u!50 &1328271421
 Rigidbody2D:
   serializedVersion: 4
@@ -2299,7 +2311,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1869a021f8b544357b6acac77a230e9c, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.114
   m_Pitch: 1
   Loop: 1
@@ -3562,21 +3574,25 @@ PrefabInstance:
       value: DialogCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 8843341946729859786, guid: fda6569f92a3e470386f002ec708cddf, type: 3}
+      propertyPath: showOnStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843341946729859786, guid: fda6569f92a3e470386f002ec708cddf, type: 3}
       propertyPath: lines.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8843341946729859786, guid: fda6569f92a3e470386f002ec708cddf, type: 3}
       propertyPath: lines.Array.data[0]
-      value: You lost in space after entering a weird glitch.
+      value: You are lost in space after entering a weird glitch.
       objectReference: {fileID: 0}
     - target: {fileID: 8843341946729859786, guid: fda6569f92a3e470386f002ec708cddf, type: 3}
       propertyPath: lines.Array.data[1]
-      value: Your indicator showing some other anomalies. Check them to find your
-        way home.
+      value: Your indicator is showing some other anomalies. Check them out to find
+        your way home.
       objectReference: {fileID: 0}
     - target: {fileID: 8843341946729859786, guid: fda6569f92a3e470386f002ec708cddf, type: 3}
       propertyPath: lines.Array.data[2]
-      value: Use ARROW keys to move.
+      value: Use the ARROW keys to move.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

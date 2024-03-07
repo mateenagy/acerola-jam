@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerTDMove : PlayerTDState
 {
+	bool isPlaying = false;
     public PlayerTDMove(PlayerTDSM stateMachine, PlayerTDFactory factory) : base(stateMachine, factory)
     {
         IsRoot = true;
@@ -27,8 +28,23 @@ public class PlayerTDMove : PlayerTDState
 		base.FixedUpdate();
 		if (Ctx.InputY != 0)
         {
+			if (!isPlaying)
+			{
+				Ctx.ship.Play();
+				isPlaying = true;
+			}
             Ctx.Rb.AddForce(Ctx.InputY * Ctx.Speed * Ctx.transform.up, ForceMode2D.Impulse);
-        }
+        } else {
+			Ctx.ship.Pause();
+			isPlaying = false;
+		}
+	}
+
+	public override void Exit()
+	{
+		base.Exit();
+		Ctx.ship.Pause();
+		isPlaying = false;
 	}
 
 	public override void CheckSwitchState()

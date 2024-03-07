@@ -67,6 +67,13 @@ public class MovingPlatform : MonoBehaviour
 		if (start != null && end != null)
 		{
 			Gizmos.DrawLine(start.position, end.position);
+		}
+	}
+
+	void OnDrawGizmosSelected()
+	{
+		if (start != null)
+		{
 			transform.position = start.position;
 		}
 	}
