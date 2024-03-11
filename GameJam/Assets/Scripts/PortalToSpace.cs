@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PortalToSpace : MonoBehaviour
 {
+	public string level = "SpaceLevel";
 	void Start()
 	{
 
@@ -19,7 +20,7 @@ public class PortalToSpace : MonoBehaviour
 		if (col.CompareTag("Player"))
 		{
 			LevelManager.Instance.currentLevel += 1;
-			LevelManager.Instance.LoadScene("SpaceLevel", "Fade");
+			LevelManager.Instance.LoadScene(level, "Fade");
 		}
 	}
 }

@@ -1101,11 +1101,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.4874754, y: 14.405564}
-      - {x: -20.937538, y: 14.5270405}
-      - {x: -20.818005, y: -12.020945}
-      - {x: 16.0245, y: -12.10219}
-      - {x: 16.22528, y: 14.608286}
+    - - {x: 0.4874754, y: 10.039798}
+      - {x: -15.367422, y: 9.709644}
+      - {x: -15.699518, y: -9.010072}
+      - {x: 13.992161, y: -8.940773}
+      - {x: 14.268213, y: 9.941431}
   m_UseDelaunayMesh: 0
 --- !u!1 &692266434 stripped
 GameObject:
@@ -14960,11 +14960,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1002893179084173132, guid: c020cd86114724ec5bc71233a560721d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 6.971606
       objectReference: {fileID: 0}
     - target: {fileID: 1002893179084173132, guid: c020cd86114724ec5bc71233a560721d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.25726
       objectReference: {fileID: 0}
     - target: {fileID: 2183008635222376214, guid: c020cd86114724ec5bc71233a560721d, type: 3}
       propertyPath: m_LocalPosition.x

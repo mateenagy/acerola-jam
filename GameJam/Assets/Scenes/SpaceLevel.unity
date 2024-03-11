@@ -362,7 +362,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   m_Layer: 0
@@ -372,14 +371,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2019,6 +2010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb74026b98bc48ff86a1484d1af8763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1328271419}
   dialog: {fileID: 738730817}
 --- !u!1001 &1254772861
 PrefabInstance:
@@ -3576,6 +3568,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3276920257087366166}
   - component: {fileID: 3362645551204893211}
+  - component: {fileID: 3362645551204893212}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -3635,6 +3628,14 @@ MonoBehaviour:
   isStarted: 0
   isDialog: 0
   insideWall: 0
+--- !u!81 &3362645551204893212
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340749334956785184}
+  m_Enabled: 1
 --- !u!1 &3369801651066952653
 GameObject:
   m_ObjectHideFlags: 0

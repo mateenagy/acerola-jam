@@ -16,6 +16,8 @@ public class LevelManager : MonoBehaviour
 	public bool isDialog = true;
 	public bool insideWall = false;
 	bool isTransitionRun = false;
+	AudioListener listener;
+	bool isMuted = false;
 	void Awake()
 	{
 		if (Instance == null)
@@ -27,6 +29,8 @@ public class LevelManager : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+
+		listener = GetComponent<AudioListener>();
 	}
 	void Start()
 	{
@@ -43,6 +47,19 @@ public class LevelManager : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.L))
 		{
 			isDialog = !isDialog;
+		}
+
+		if (Input.GetKeyDown(KeyCode.M))
+		{
+			isMuted = !isMuted;
+			if (isMuted)
+			{
+				AudioListener.volume = 0;
+			}
+			else
+			{
+				AudioListener.volume = 1;
+			}
 		}
 	}
 

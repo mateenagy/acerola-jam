@@ -13242,7 +13242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 312770212}
-  - component: {fileID: 312770211}
+  - component: {fileID: 312770213}
   m_Layer: 0
   m_Name: CameraBounding
   m_TagString: Untagged
@@ -13250,8 +13250,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &312770211
-BoxCollider2D:
+--- !u!4 &312770212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312770210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.8756754, y: 7.1333504, z: -0.09887205}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &312770213
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -13282,7 +13297,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.4245968, y: -6.1505613}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -13292,24 +13307,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 17.389122, y: 29.217756}
-  m_EdgeRadius: 0
---- !u!4 &312770212
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 312770210}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.8756754, y: 7.1333504, z: -0.09887205}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 0.2258153, y: 2.3548932}
+      - {x: -8.026608, y: 2.2660854}
+      - {x: -8.039696, y: -8.78783}
+      - {x: 10.222579, y: -8.712559}
+      - {x: 10.13422, y: 2.3413563}
+  m_UseDelaunayMesh: 0
 --- !u!1 &455468612
 GameObject:
   m_ObjectHideFlags: 0
@@ -13527,9 +13532,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8843341946729859786, guid: fda6569f92a3e470386f002ec708cddf, type: 3}
       propertyPath: lines.Array.data[1]
-      value: Press X to leave a copy of yourself behind in time. But be careful you
-        only have limited parallel selves. \nIn the bottom left corner you can find
-        how many parallel selves you have.
+      value: Press X to leave a copy of yourself behind in time. \nBut be careful
+        you only have limited parallel selves. \nIn the bottom left corner you can
+        find how many parallel selves you have.
       objectReference: {fileID: 0}
     - target: {fileID: 8843341946729859786, guid: fda6569f92a3e470386f002ec708cddf, type: 3}
       propertyPath: lines.Array.data[2]
@@ -13648,6 +13653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69475ee3a9b454c4ab7e6f14c8b8f0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: SpaceLevel
 --- !u!1001 &1297353268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14270,6 +14276,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1002893179084173132, guid: c020cd86114724ec5bc71233a560721d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.1671045
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002893179084173132, guid: c020cd86114724ec5bc71233a560721d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.9138799
+      objectReference: {fileID: 0}
     - target: {fileID: 2183008635222376214, guid: c020cd86114724ec5bc71233a560721d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.8
@@ -14325,8 +14339,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9063622918992411543, guid: c020cd86114724ec5bc71233a560721d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4368984737618138589}
   m_SourcePrefab: {fileID: 100100000, guid: c020cd86114724ec5bc71233a560721d, type: 3}
+--- !u!1 &4368984737618138588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9063622918992411543, guid: c020cd86114724ec5bc71233a560721d, type: 3}
+  m_PrefabInstance: {fileID: 4368984737618138587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4368984737618138589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4368984737618138588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BoundingShape2D: {fileID: 312770213}
+  m_Damping: 0.5
+  m_MaxWindowSize: -1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
