@@ -14,6 +14,7 @@ public class Jump : PlayerState
 		base.Enter();
 		Ctx.JumpSound.Play();
 		Ctx.Rb.velocity = new(Ctx.Rb.velocity.x, Ctx.JumpHeight);
+		Ctx.Animator.SetBool("isJumping", true);
 		InitialSubState();
 	}
 
@@ -39,7 +40,7 @@ public class Jump : PlayerState
 	public override void CheckSwitchState()
 	{
 		base.CheckSwitchState();
-		if (!Ctx.IsGrounded && Ctx.IsFall)
+		if (Ctx.IsFall)
 		{
 			SwitchState(Factory.States[PlayerStates.Fall]);
 		}

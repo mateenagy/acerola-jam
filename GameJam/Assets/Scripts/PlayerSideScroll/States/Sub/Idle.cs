@@ -17,6 +17,11 @@ public class Idle : PlayerState
 
 		CheckSwitchState();
 	}
+	public override void Exit()
+	{
+		base.Exit();
+		Ctx.Animator.SetBool("isJumping", false);
+	}
 	public override void CheckSwitchState()
 	{
 		base.CheckSwitchState();

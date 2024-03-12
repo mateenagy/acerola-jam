@@ -37,7 +37,7 @@ public class Ground : PlayerState
 	public override void CheckSwitchState()
 	{
 		base.CheckSwitchState();
-		if (!Ctx.IsGrounded && !Ctx.IsJumping)
+		if (!Ctx.IsGrounded && !Ctx.IsJumping && Ctx.IsFall)
 		{
 			SwitchState(Factory.States[PlayerStates.Fall]);
 		}

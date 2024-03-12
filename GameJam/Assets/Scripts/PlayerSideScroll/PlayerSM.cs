@@ -30,7 +30,7 @@ public class PlayerSM : MonoBehaviour
 	bool isJumping = false;
 
 	[Header("Fall")]
-	bool isFall = false;
+	public bool isFall = false;
 	[Header("Clone")]
 	[SerializeField] GameObject clonePrefab;
 	public UnityEvent _event;

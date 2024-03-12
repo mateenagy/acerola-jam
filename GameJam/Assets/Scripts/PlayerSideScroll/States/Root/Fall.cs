@@ -12,6 +12,9 @@ public class Fall : PlayerState
 	public override void Enter()
 	{
 		base.Enter();
+		Ctx.Animator.SetBool("isJumping", false);
+		Ctx.Animator.SetBool("isFall", true);
+		Debug.Log("Enter");
 		InitialSubState();
 	}
 
@@ -38,6 +41,7 @@ public class Fall : PlayerState
 	{
 		base.Exit();
 		Ctx.IsJumping = false;
+		Ctx.Animator.SetBool("isFall", false);
 	}
 
 	public override void CheckSwitchState()
